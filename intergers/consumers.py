@@ -17,8 +17,7 @@ def Decode(serialLine):
     if serialLineStr[0] =='B': #첫문자 검사 B
         data = str(serialLineStr[1:-2])
         part1, part2, part3 = data.split(",")
-        result = ['BPM : '+str(part1), '심박수 간격 : '+str(part2), 'analog input :'+str(part3)]
-        return result
+        return int(part1), int(part2), int(part3)
     else : 
         print ("Error_Wrong Signal") 
         return False
