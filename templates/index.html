@@ -13,8 +13,9 @@
         <div class="row">
             <div class="col- mx-auto mt-5">
 
-                <h1 id = "app">{{ text }}</h1>
-
+                <p>raw data : <span id = "ap">{{ text }}</span></p>
+                <p>interval : <span id = "app">{{ text }}</span></p>
+                <p>BPM : <span id = "appp">{{ text }}</span></p>
             </div>
         </div>
     </div>
@@ -23,7 +24,12 @@
         socket.onmessage = function(event){
             var data = JSON.parse(event.data);
             console.log(data);
-            document.querySelector('#app').innerText = data.message;
+            document.querySelector('#ap').innerText = data.raw;
+            document.querySelector('#app').innerText = data.interval;
+            document.querySelector('#appp').innerText = data.BPM;
+            
+            
+            
         }
     </script>
 </body>

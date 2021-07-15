@@ -20,7 +20,7 @@ def Decode(serialLine):
         return int(part1), int(part2), int(part3)
     else : 
         print ("Error_Wrong Signal") 
-        return False
+        return 9999,9999,9999
 
 class WSConsumer(WebsocketConsumer) :
     def connect(self):
@@ -28,8 +28,8 @@ class WSConsumer(WebsocketConsumer) :
         while True:
             if serialPort.readable(): 
                 readLine = serialPort.readline() 
-                code=str(Decode(readLine))
-                self.send(json.dumps({'message': code}))         
+                BPM, interval, raw = Decode(readLine)
+                self.send(json.dumps({'BPM':BPM,'interval':interval, 'raw': raw}))         
 
 #MSG = serial.Serial("COM3",9600)
 '''
